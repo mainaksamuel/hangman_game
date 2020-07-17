@@ -3,6 +3,9 @@
 # Author: Samuel K.
 
 
+from random_word import RandomWords
+
+
 # Verify User guess input is not zero or more than one character.
 def valid_input(guess: str) -> bool:
     if len(guess) > 1:
@@ -50,9 +53,10 @@ if __name__ == '__main__':
 
     print(initial_message, end="\n")
 
-    # Initialize the Secret word (demo with "Hello")
-    # TODO: Generate random words for the user to guess.
-    secret_word = "Hello"
+    # Initialize the Secret word.
+    rword = RandomWords()
+    secret_word = rword.get_random_word()
+    print("Secret word: ", secret_word, end="\n")
 
     # Generate blank/underscore placeholders for each character in secret word
     # The `word_progress` variable will track user progress in guessing the secret word correctly.

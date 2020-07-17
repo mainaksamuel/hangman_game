@@ -1,2 +1,6 @@
+# JetBrains Products
 .idea
 *.iml
+
+# Python Virtual Environment
+env
