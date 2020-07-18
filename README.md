@@ -21,8 +21,10 @@ An option will also be displayed to either `Quit` the game or start a `New Game`
 
 #### Quiting the Game 
 Enter `qg` at the prompt to `Quit` the Game while in game play
+
 ![exit png](https://github.com/samKM/hangman_game/blob/master/screenshots/quit_game.png)
 >> Or
 
 `n` at the `New Game?` prompt, at the end of game play.
+
 ![exit png](https://github.com/samKM/hangman_game/blob/master/screenshots/new_game_prompt.png)
