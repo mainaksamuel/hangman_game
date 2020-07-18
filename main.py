@@ -11,8 +11,8 @@ game_options = {"nw": "guess a New Word", "qg": "Quit Game", "he": "show Help me
 # Initialize the game.
 def new_game(secret_word: str, number_of_tries: int, word_progress: str) -> list:
     secret_word = get_secret_word()
-    print("Secret word: ", secret_word, end="\n")
     word_progress = "".join(["_"] * len(secret_word))
+    print("Guess the word: ", word_progress, end="\n")
     number_of_tries = 0
     print(word_progress)
     return [secret_word, number_of_tries, word_progress]
@@ -98,11 +98,11 @@ if __name__ == '__main__':
 
     # Initialize the Secret word.
     secret_word = get_secret_word()
-    print("Secret word: ", secret_word, end="\n")
 
     # Generate blank/underscore placeholders for each character in secret word
     # The `word_progress` variable will track user progress in guessing the secret word correctly.
     word_progress = "".join(["_"] * len(secret_word))
+    print("Guess the word: ", word_progress, end="\n")
 
     # Statistics to show user how many attempts they made before getting the correct secret word.
     number_of_tries = 0
