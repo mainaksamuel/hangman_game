@@ -8,7 +8,7 @@ import urllib.request
 game_options = {"nw": "guess a New Word", "qg": "Quit Game", "he": "show Help message", "sw": "show Secret Word"}
 
 
-# Initialize the game.
+# Initialize a new game.
 def new_game(secret_word: str, number_of_tries: int, word_progress: str) -> list:
     secret_word = get_secret_word()
     word_progress = "".join(["_"] * len(secret_word))
@@ -17,7 +17,7 @@ def new_game(secret_word: str, number_of_tries: int, word_progress: str) -> list
     return [secret_word, number_of_tries, word_progress]
 
 
-# Verify User guess input is not zero or more than one character.
+# Verify User guess input is not empty or more than one character (except for game option commands).
 def valid_input(guess: str) -> bool:
     if len(guess) > 1 and guess not in game_options.keys():
         print("You entered too many characters.")
@@ -29,19 +29,17 @@ def valid_input(guess: str) -> bool:
         return True
 
 
-# Replace underscore with Hint or Guessed word
+# Replace underscores with Guessed character
 def update_progress(guess_word: str, guess: str, word_progress: str) -> str:
-    cursor = 0
     w_progress = list(word_progress)
-    for c in guess_word:
-        if (c == guess) and (w_progress[cursor] == "_"):
-            w_progress[cursor] = guess
+    for i, c in enumerate(guess_word):
+        if (c == guess) and (w_progress[i] == "_"):
+            w_progress[i] = guess
             break
-        cursor += 1
     return "".join(w_progress)
 
 
-# Check if User has guessed the secret word correctly and that there are no blank spaces.
+# Check if User has guessed the secret word correctly and that there are no blank (underscores) spaces.
 def completed(w_progress: str) -> bool:
     status: bool = False
     if "_" not in w_progress:
@@ -50,7 +48,7 @@ def completed(w_progress: str) -> bool:
     return status
 
 
-# Generate random Secret Word
+# Generate a random Secret Word
 def get_secret_word() -> str:
     words_url = "http://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
     word_url_response = urllib.request.urlopen(words_url)
@@ -70,7 +68,7 @@ def help_msg():
         print("{}\t\t\t{}".format(key, game_options.get(key)), end="\n")
 
 
-# Show at the end of each word play to allow the user to exit or continue playing the game.
+# Show at the end of each word play (or word reveal) to allow the user to exit or continue playing the game.
 def exit_option(secret_word="", number_of_tries=0, word_progress=""):
     option = input("New Game? [y/n]").strip().lower()
     if option == "y" or option == "yes":
@@ -152,5 +150,3 @@ if __name__ == '__main__':
         print("")
         # Allow the user to continue with the game after successfully guessing the secret word.
         secret_word, number_of_tries, word_progress = exit_option()
-
-# TODO: Refactor to be more Object Oriented
