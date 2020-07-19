@@ -1,0 +1,17 @@
+TODO: - Allow users to enter more than one character if they've figured out the secret word or part of secret word.
+        Multiple characters entered at once MUST follow the same sequence as that of the secret word (or part of the
+        secret word) whether there are blanks/underscores in the word progress or not, for the guess to be valid, otherwise
+        the guess will not be valid. For example:
+            Secret_word = 'vacation'    guess = 'ion'       // VALID because the characters in the guess follow same sequence as part of the Secret word
+            Secret_word = 'vacation'    guess = 'action'    // INVALID because 'a' is missing between 'c' and 't' in the guess
+            Secret_word = 'topmost'    guess = 'most'       word_progress = '____os_'   // VALID because the guess sequence is same as secret_word
+                                                                                           even though 'os' had already been guessed in word_progress.
+            Secret_word = 'topmost'    guess = 'mt'         word_progress = '____os_'   // INVALID because the guess excludes 'os' from the secret_word
+                                                                                           even though 'os' had already been guessed in word_progress.
+      - Game commands will now have to be prefixed with an exclamation mark (!) to distinguish them from multiple
+        character entries. For example:
+            `!q` to Quit the game
+            `!w` to Generate a new Secret Word
+            `!h` to Show the Help Message
+            `!s` to Reveal the Secret Word
+
