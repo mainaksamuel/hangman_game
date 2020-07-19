@@ -14,4 +14,3 @@ TODO: - Allow users to enter more than one character if they've figured out the 
             `!w` to Generate a new Secret Word
             `!h` to Show the Help Message
             `!s` to Reveal the Secret Word
-
